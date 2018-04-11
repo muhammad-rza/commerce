@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
-// const autoIncrement = require("mongoose-auto-increment");
-//
-// var connection = mongoose.connect("mongodb://muhammadrza:aslandanger8685212@ds052629.mlab.com:52629/xtpredfghn_1");
 
-// autoIncrement.initialize(connection);
+var shortid = require('shortid');
 
 const ValueOfFieldSchema = new Schema({
-
+    _id: {
+        type: String,
+        default: shortid.generate
+    },
     az:{
         label:String,
         placeholder:{

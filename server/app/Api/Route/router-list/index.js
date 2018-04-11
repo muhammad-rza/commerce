@@ -5,6 +5,7 @@ var routeList = [
     'example',
     'admin',
     'template',
+    'brands',
     'categories'
 ]
 

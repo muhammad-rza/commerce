@@ -13,6 +13,7 @@ class BrandController extends BaseController {
 
     index(req, res, next) {
 
+
         BrandModel.find((error, payload) => {
 
             if (error) {
@@ -36,10 +37,32 @@ class BrandController extends BaseController {
         let body = req.body;
 
 
+        // var base64Data = brand.logo.replace(/^data:image\/png;base64,/, "");
+        //
+        // require("fs").writeFile("out.png", base64Data, 'base64', function(err) {
+        //     console.log(err);
+        // });
+
+
         const newBrand = {
             name:body.name,
             slug:body.slug,
+            az: {
+                keywords:body.keywords,
+                description:body.keywords,
+                title:body.title,
+            },
+            ru: {
+                keywords:body.keywords,
+                description:body.keywords,
+                title:body.title,
+            },
             logo:body.logo,
+            banner:body.banner,
+            access:{
+                type:Number,
+                default:0,
+            }
         }
 
 

@@ -3,9 +3,13 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 const TemplateModel = require(API_MODEL_PATH + 'Template/TemplateModel');
 
+var shortid = require('shortid');
 
 const CategorySchema = new Schema({
-
+    _id: {
+        type: String,
+        default: shortid.generate
+    },
     az: {
         name: String,
         slug: String

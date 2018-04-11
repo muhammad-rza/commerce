@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
-// const autoIncrement = require("mongoose-auto-increment");
+
+var shortid = require('shortid');
+
 const FieldOfTemplateModel = require(API_MODEL_PATH + 'Template/FieldOfTemplateModel');
 const ValueOfFieldModel = require(API_MODEL_PATH + 'Template/ValueOfFieldModel');
 
 const TemplateSchema = new Schema({
-
+    _id: {
+        type: String,
+        default: shortid.generate
+    },
     name:String,
     fields:[
         { type: ObjectId }

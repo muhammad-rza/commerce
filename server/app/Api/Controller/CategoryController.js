@@ -58,7 +58,7 @@ class CategoryController extends BaseController {
         CategoryModel.insertCategory(new CategoryModel(newCategory), (error, payload) => {
 
             if (error)
-                console.log(error);
+            return res.send({error});
             else
                 return res.send(payload);
 
