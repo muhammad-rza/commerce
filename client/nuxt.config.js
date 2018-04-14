@@ -21,6 +21,7 @@ module.exports = {
   env: {
     baseUrl: 3001 || 5555,
     appBaseUrl: '/admin-secret/',
+    apiBaseUrl:'http://localhost:3333/'
 
   },
 

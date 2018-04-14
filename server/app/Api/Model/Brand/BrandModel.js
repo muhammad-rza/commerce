@@ -5,29 +5,34 @@ const ObjectId = Schema.ObjectId;
 var shortid = require('shortid');
 
 const BrandSchema = new Schema({
-    _id: {
-        type: String,
-        default: shortid.generate
-    },
+    // _id: {
+    //     type: String,
+    //     default: shortid.generate
+    // },
     name:String,
     slug:String,
     az: {
         keywords:Array,
-        description:String,
-        title:String,
+        description:{
+            type:String,
+            default:null
+        },
     },
     ru: {
         keywords:Array,
-        description:String,
-        title:String,
+        description:{
+            type:String,
+            default:null
+        },
     },
-    logo:String,
-    banner:String,
-    access:{
-        type:Number,
-        default:0,
-    }
-
+    logo:{
+        type:String,
+        default:null
+    },
+    banner:{
+        type:String,
+        default:null
+    },
     status:{
         type:Boolean,
         default:true,

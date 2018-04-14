@@ -6,6 +6,7 @@ const apiRoutes = {
   templates:'/template',
   fields:'/template-fields',
   values:'/template-values',
+  brands:'/brands',
 
 };
 

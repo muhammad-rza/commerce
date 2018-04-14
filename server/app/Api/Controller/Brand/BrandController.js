@@ -1,7 +1,8 @@
 const BaseController = require(APP_ROOT_PATH + 'base/BaseController');
-const BrandModel = require(API_MODEL_PATH + 'BrandModel');
+const BrandModel = require(API_MODEL_PATH + 'Brand/BrandModel');
 
 const slugify = require(MAIN_ROOT_PATH + '/lib/slugify');
+const imageUpload = require(MAIN_ROOT_PATH + '/lib/imageUpload');
 
 class BrandController extends BaseController {
     /*
@@ -44,37 +45,44 @@ class BrandController extends BaseController {
         // });
 
 
-        const newBrand = {
-            name:body.name,
-            slug:body.slug,
-            az: {
-                keywords:body.keywords,
-                description:body.keywords,
-                title:body.title,
-            },
-            ru: {
-                keywords:body.keywords,
-                description:body.keywords,
-                title:body.title,
-            },
-            logo:body.logo,
-            banner:body.banner,
-            access:{
-                type:Number,
-                default:0,
+        imageUpload(body.logo , 'brands/logo'  ,(error , logo)=> {
+
+            if(error) return res.send({error});
+
+
+
+
+            const newBrand = {
+
+                name:body.name,
+                slug:(body.slug) ? slugify(body.slug) : slugify(body.name),
+                // az: {
+                //     keywords:body.keywords,
+                //     description:body.keywords,
+                // },
+                // ru: {
+                //     keywords:body.keywords,
+                //     description:body.keywords,
+                // },
+                logo,
+                // banner,
+                status:body.status
+
             }
-        }
 
 
 
 
 
-        BrandModel.insertBrand(new BrandModel(newBrand), (error, payload) => {
+            BrandModel.insertBrand(new BrandModel(newBrand), (error, payload) => {
 
-            if (error)
-                console.log(error);
-            else
-                return res.send(payload);
+                if (error)
+                    console.log(error);
+                else
+                    return res.send(payload);
+
+            });
+
 
         });
 
@@ -109,6 +117,18 @@ class BrandController extends BaseController {
 
         })
     }
+
+    destroy(req, res, next) {
+
+        BrandModel.deleteById( req.params.id, (error, payload)=> {
+
+            if(error)
+                console.log(error);
+            else
+                return res.send(payload);
+            });
+    }
+
 }
 
 module.exports = BrandController;

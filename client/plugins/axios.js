@@ -23,8 +23,8 @@ axios.interceptors.response.use((response) => {
   return Promise.reject(error.response);
 });
 
-const prefix = '/api/v1';
-axios.defaults.baseURL = 'http://localhost:3333'+prefix;
+const prefix = 'api/v1';
+axios.defaults.baseURL = process.env.apiBaseUrl+prefix;
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + Cookie.get('_token');
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 //

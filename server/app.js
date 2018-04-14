@@ -6,6 +6,9 @@ global.config = require('./config/');
 /** EXPRESS **/
 const express = require('express');
 const mongoose = require('mongoose');
+/** PATH **/
+var path = require('path');
+
 const app = express();
 
 /** MONGODB CONNECT **/
@@ -27,6 +30,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 /** COKKIE PARSER **/
 // app.use(cookieParser());
+
+
+/** STATIC PATHS **/
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use('/storage', express.static(path.join(__dirname, 'storage')))
 
 
 /** EXPRESS VALIDATOR **/

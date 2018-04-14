@@ -2,20 +2,31 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
-var shortid = require('shortid');
+// var shortid = require('shortid');
 
 const BrandSchema = new Schema({
-    _id: {
-        type: String,
-        default: shortid.generate
-    },
+    // _id: {
+    //     type: String,
+    //     default: shortid.generate
+    // },
     category_id:String,
+
     brand_id:String,
+
     properties:ObjectId,
+
     inStock:Number,
-    main_images:String,
+
+    stockCode:String,
+
+    main_images:Number,
+
     galleries:Array,
-    price:Number,
+
+    price:{
+        old:Number,
+        new:Number
+    },
     az: {
         keywords:Array,
         description:String,

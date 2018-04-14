@@ -99,7 +99,7 @@
         if(!!category) {
           return category.az.name;
         }else {
-          return '__PARENT__'
+          return '__ROOT__'
         }
 
       },

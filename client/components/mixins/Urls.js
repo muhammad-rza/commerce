@@ -5,7 +5,9 @@ export default {
             '/dashboard',
             '/auth',
             // 'mainRoute'
-        ]
+        ],
+        apiPath: process.env.apiBaseUrl,
+        apiIamgePath: process.env.apiBaseUrl + 'storage/'
     }),
     methods:{
         setUrl(url,prefix_index) {

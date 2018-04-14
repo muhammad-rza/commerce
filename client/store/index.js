@@ -4,6 +4,7 @@ import values from './values';
 import fields from './fields';
 import templates from './templates';
 import categories from './categories';
+import brands from './brands';
 
 const createStore = () => {
   return new Vuex.Store({
@@ -13,6 +14,7 @@ const createStore = () => {
       fields,
       templates,
       categories,
+      brands
     },
   })
 }
